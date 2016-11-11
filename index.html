@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <title> TODOLIST WITH BOOTSTRAP AND ANGULAR</title>
+  </head>
+  <body>
+    <style>
+        label {
+          font-family: arial,sans-serif;
+          text-align: center;
+
+        }
+
+        h1 {
+          font-family: arial,sans-serif;
+          text-align: center;
+        }
+    </style>
+    <div class="col-md-12">
+      <h1>TODOLIST</h1>
+      <label for="TODO"> WRITE WHAT YOU WANT TO DO</label><br>
+
+      <div class="form-group">
+          <input type="text" id="TODO" name="TODO" class="form-control" ng-model="todolist">
+          <button type="button" class="btn btn-default" ng-click="add()">ADD TODOLIST</button>
+      </div>
+
+      <div class="container">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Check</th>
+              <th>TODO</th>
+              <th>STAGE</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+
+
+
+
+  </body>
+
+
+</html>
