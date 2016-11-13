@@ -47,7 +47,7 @@
               </thead>
 
               <tbody>
-                <tr ng-repeat="todo in todos" >
+                <tr ng-repeat="todo in todos" ng-click="Setchecklist($index)">
                   <td><input type="checkbox" ng-model="todo.done"></td>
                   <td> {{ todo.title }} </td>
                   <td><span ng-if="todo.done"> COMPLETE</span> </td>

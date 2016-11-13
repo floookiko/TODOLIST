@@ -17,13 +17,34 @@ angular.module('TODOlist' , [])
       return ctrl.TODOLIST
     }
 
+    ctrl.SetdoneforTRUE = function(index) {
+      ctrl.TODOLIST[index].done = true
+    }
+
+    ctrl.SetdoneforFALSE = function(index) {
+      ctrl.TODOLIST[index].done = false
+    }
+
   })
 
   .controller('ListTODO', function($scope, TODOService){
     $scope.todos = TODOService.list()
+
+    function Setchecklist(index){
+      if(TODOService.TODOLIST[index].done === true){
+
+        TODOService.SetdoneforFALSE(index)
+
+      }else if(TODOService.TODOLIST[index].done === false){
+
+        TODOService.SetdoneforTRUE(index)
+
+      }
+    }
   })
 
   .controller('AddTODOController', function($scope, TODOService){
+
     $scope.save = function() {
       var list = {
         title : $scope.title,
@@ -35,6 +56,6 @@ angular.module('TODOlist' , [])
     }
 
     function resetForm(){
-      $scope.todo = ''
+      $scope.title = ''
     }
   })
