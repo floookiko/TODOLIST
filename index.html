@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="TODOlist">
   <head>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <meta charset="utf-8">
@@ -9,25 +9,26 @@
     <style>
         label {
           font-family: arial,sans-serif;
-          text-align: center;
-
+          text-alig
         }
 
         h1 {
           font-family: arial,sans-serif;
           text-align: center;
+          font-size: 50px;
         }
     </style>
     <div class="col-md-12">
       <h1>TODOLIST</h1>
       <label for="TODO"> WRITE WHAT YOU WANT TO DO</label><br>
 
-      <div class="form-group">
-          <input type="text" id="TODO" name="TODO" class="form-control" ng-model="todolist">
-          <button type="button" class="btn btn-default" ng-click="add()">ADD TODOLIST</button>
+      <div class="form-group" ng-controller= "AddTODOController">
+          <input type="text" id="TODO" name="TODO" class="form-control" ng-model="title" placeholder="what need to be ">
+          <br>
+          <button type="button" class="btn btn-default" ng-click="save()">ADD TODOLIST</button>
       </div>
 
-      <div class="container">
+      <div class="container" ng-controller="ListTODO">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -38,7 +39,11 @@
           </thead>
 
           <tbody>
-
+            <tr ng-repeat="todo in todos" >
+              <td><input type="checkbox" ng-model="todo.done"></td>
+              <td> {{ todo.title }} </td>
+              <td><span ng-if="todo.done"> COMPLETE</span> </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -46,11 +51,7 @@
 
     </div>
 
-
-
-
-
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="app.js" charset="utf-8"></script>
   </body>
-
-
 </html>
