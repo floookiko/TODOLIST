@@ -2,54 +2,63 @@
 <html ng-app="TODOlist">
   <head>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Shrikhand" rel="stylesheet">
     <meta charset="utf-8">
     <title> TODOLIST WITH BOOTSTRAP AND ANGULAR</title>
   </head>
   <body>
     <style>
+
+        body {
+          background-color: #E08283;
+        }
         label {
           font-family: arial,sans-serif;
           text-alig
         }
 
         h1 {
-          font-family: arial,sans-serif;
+          font-family: 'Shrikhand', cursive;
           text-align: center;
-          font-size: 50px;
+          color: #F5AB35;
+          font-size: 100px;
         }
     </style>
-    <div class="col-md-12">
-      <h1>TODOLIST</h1>
-      <label for="TODO"> WRITE WHAT YOU WANT TO DO</label><br>
+      <h1>todolist</h1>
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <label for="TODO"> WRITE WHAT YOU WANT TO DO</label><br>
 
-      <div class="form-group" ng-controller= "AddTODOController">
-          <input type="text" id="TODO" name="TODO" class="form-control" ng-model="title" placeholder="what need to be ">
-          <br>
-          <button type="button" class="btn btn-default" ng-click="save()">ADD TODOLIST</button>
+          <div class="form-group" ng-controller= "AddTODOController">
+              <input type="text" id="TODO" name="TODO" class="form-control" ng-model="title" placeholder="what need to be ">
+              <br>
+              <button type="button" id="add_button" class="btn btn-default" ng-click="save()" ng-disabled="!title">ADD TODOLIST</button>
+          </div>
+
+          <div class="container" ng-controller="ListTODO">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Check</th>
+                  <th>TODO</th>
+                  <th>STAGE</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr ng-repeat="todo in todos" >
+                  <td><input type="checkbox" ng-model="todo.done"></td>
+                  <td> {{ todo.title }} </td>
+                  <td><span ng-if="todo.done"> COMPLETE</span> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-2"></div>
       </div>
 
-      <div class="container" ng-controller="ListTODO">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Check</th>
-              <th>TODO</th>
-              <th>STAGE</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr ng-repeat="todo in todos" >
-              <td><input type="checkbox" ng-model="todo.done"></td>
-              <td> {{ todo.title }} </td>
-              <td><span ng-if="todo.done"> COMPLETE</span> </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-
-    </div>
 
     <script src="node_modules/angular/angular.min.js"></script>
     <script src="app.js" charset="utf-8"></script>
